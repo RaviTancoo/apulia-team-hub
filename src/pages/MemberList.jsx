@@ -7,6 +7,7 @@ function MemberList() {
     const [members, setMembers] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         async function fetchMembers() {
