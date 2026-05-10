@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { supabase } from "../lib/supabase"
+import SearchBar from "../components/SearchBar"
 
 function MemberList() {
     const [members, setMembers] = useState([])
@@ -35,6 +36,8 @@ function MemberList() {
     return (
         <div className="memberList">
             <h2 className="memberList__heading">Our Team</h2>
+
+            <SearchBar search={search} setSearch={setSearch} />
 
             <div className="memberList__grid">
                 {members.map(m => (
