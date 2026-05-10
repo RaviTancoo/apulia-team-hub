@@ -34,6 +34,10 @@ function MemberList() {
     if (loading) return <p>Loading team...</p>
     if (error) return <p>Error: {error}</p>
 
+    const filteredMembers = members.filter((m) =>
+        m.name.toLowerCase().includes(search.toLowerCase())
+    )
+
     return (
         <div className="memberList">
             <h2 className="memberList__heading">Our Team</h2>
@@ -41,12 +45,12 @@ function MemberList() {
             <SearchBar search={search} setSearch={setSearch} />
 
             <div className="memberList__grid">
-                {members.map(m => (
+                {filteredMembers.map(m => (
                     <div className="member-card" key={m.id} title="Click Here"
->
+                    >
                         <h3 className="member-card--name">{m.name}</h3>
                         <p className="member-card--role">{m.role}</p>
-                        
+
                         <Link to={`/member/${m.id}`} className="member-card--link">
                             View Profile
                         </Link>
